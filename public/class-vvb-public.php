@@ -51,6 +51,36 @@ class Vvb_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->register_custom_template();
+
+	}
+
+	/**
+	 * Register custom template for the client CPT
+	 *
+	 * @since    1.0.0
+	 */
+	public function register_custom_template() {
+
+		/**
+		 * Register custom template
+		 */
+		add_filter('single_template', 'template_client');
+
+		function template_client($single) {
+
+			global $wp_query, $post;
+
+			/* Checks for single template by post type */
+			if ( $post->post_type == 'client' ) {
+				if ( file_exists( plugin_dir_path( __FILE__ ) . '/templates/single-client.php' ) ) {
+					return plugin_dir_path( __FILE__ ) . '/templates/single-client.php';
+				}
+			}
+
+			return $single;
+
+		}
 
 	}
 
