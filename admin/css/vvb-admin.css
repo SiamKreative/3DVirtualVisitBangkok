@@ -1,4 +1,10 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+[data-name="matterportcom_id"] .acf-label {
+	background: url('../images/matterport.png') no-repeat 100% 0;
+}
+
+@media screen and (max-width: 782px) {
+	[data-name="matterportcom_id"] .acf-label {
+		background: none;
+	}
+
+}
