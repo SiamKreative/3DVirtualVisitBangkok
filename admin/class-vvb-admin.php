@@ -51,6 +51,75 @@ class Vvb_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->register_cpt();
+		$this->register_taxonomy();
+
+	}
+
+	/**
+	 * Register Custom Post Type
+	 *
+	 * @since    1.0.0
+	 */
+	public static function register_cpt() {
+
+		register_extended_post_type( 'client', array(
+
+			# Override menu icon
+			'menu_icon' => 'dashicons-images-alt2',
+
+			# Add the post type to the site's main RSS feed:
+			'show_in_feed' => true,
+
+			# Add some custom columns to the admin screen:
+			'admin_cols' => array(
+				'added_date' => array(
+				    'title' => 'Published',
+				    'post_field' => 'post_date',
+				),
+				'type' => array(
+					'taxonomy' => 'category'
+				)
+			),
+
+			# Add a dropdown filter to the admin screen:
+			'admin_filters' => array(
+				'type' => array(
+					'taxonomy' => 'category'
+				)
+			)
+
+		), array(
+
+			# Override the base names used for labels:
+			'singular' => 'Client',
+			'plural'   => 'Clients',
+			'slug'     => 'clients'
+
+		) );
+
+	}
+
+	/**
+	 * Register Custom Taxonomy
+	 *
+	 * @since    1.0.0
+	 */
+	public static function register_taxonomy() {
+
+		register_extended_taxonomy( 'category', 'client', array(
+
+			# Show this taxonomy in the 'At a Glance' dashboard widget:
+			'dashboard_glance' => true,
+
+		), array(
+
+			# Override the base names used for labels:
+			'singular' => 'Category',
+			'plural'   => 'Categories',
+			'slug'     => 'categories'
+
+		) );
 
 	}
 
