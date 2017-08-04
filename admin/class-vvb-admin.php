@@ -61,8 +61,8 @@ class Vvb_Admin {
 	 * @return void
 	 */
 	private function init() {
-		$this->register_cpt();
-		$this->register_taxonomy();
+		add_action( 'init', array( $this, 'register_cpt' ) );
+		add_action( 'init', array( $this, 'register_taxonomy' ) );
 	}
 
 	/**
