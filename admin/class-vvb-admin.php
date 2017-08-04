@@ -116,7 +116,7 @@ class Vvb_Admin {
 	 */
 	public static function register_taxonomy() {
 
-		register_extended_taxonomy( 'category', 'client', array(
+		register_extended_taxonomy( 'client_category', 'client', array(
 
 			# Show this taxonomy in the 'At a Glance' dashboard widget:
 			'dashboard_glance' => true,
