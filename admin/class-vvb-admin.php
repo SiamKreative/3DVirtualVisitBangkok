@@ -70,7 +70,7 @@ class Vvb_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function register_cpt() {
+	public function register_cpt() {
 
 		register_extended_post_type( 'client', array(
 
@@ -114,7 +114,7 @@ class Vvb_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function register_taxonomy() {
+	public function register_taxonomy() {
 
 		register_extended_taxonomy( 'client_category', 'client', array(
 
