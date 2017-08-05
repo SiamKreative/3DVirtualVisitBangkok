@@ -44,16 +44,25 @@ class Vvb_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string $plugin_name The name of this plugin.
+	 * @param      string $version     The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-		$this->register_cpt();
-		$this->register_taxonomy();
+		$this->version     = $version;
+		$this->init();
+	}
 
+	/**
+	 * Initialize the class.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	private function init() {
+		add_action( 'init', array( $this, 'register_cpt' ) );
+		add_action( 'init', array( $this, 'register_taxonomy' ) );
 	}
 
 	/**
@@ -61,7 +70,7 @@ class Vvb_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function register_cpt() {
+	public function register_cpt() {
 
 		register_extended_post_type( 'client', array(
 
@@ -105,9 +114,9 @@ class Vvb_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function register_taxonomy() {
+	public function register_taxonomy() {
 
-		register_extended_taxonomy( 'category', 'client', array(
+		register_extended_taxonomy( 'client_category', 'client', array(
 
 			# Show this taxonomy in the 'At a Glance' dashboard widget:
 			'dashboard_glance' => true,
