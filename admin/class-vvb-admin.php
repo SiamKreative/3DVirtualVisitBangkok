@@ -87,14 +87,14 @@ class Vvb_Admin {
 				    'post_field' => 'post_date',
 				),
 				'type' => array(
-					'taxonomy' => 'category'
+					'taxonomy' => 'client_category'
 				)
 			),
 
 			# Add a dropdown filter to the admin screen:
 			'admin_filters' => array(
 				'type' => array(
-					'taxonomy' => 'category'
+					'taxonomy' => 'client_category'
 				)
 			)
 
